@@ -143,11 +143,34 @@ Create the `searchFilter` function
 This function will filter through the students by name displaying the cards with the name in the search term
 */
 
+const searchFilter = (list) => {
+
+   // the search input
+   const search = document.querySelector('#search');
+
+   // call the student-item DOM class and assign it a variable called 'studentItem'
+   const studentItem = document.getElementsByClassName('student-item');
+
+  
+   const input = (event) => {
+      const inputTerm = event.target.value.toLowerCase();
+         //loop through the data's array making a new array of names
+            list.map(studentCard => {
+            const studentName = (`${studentCard.name.first} ${studentCard.name.last}`).toLowerCase()
+            if(studentName.includes(inputTerm)){
+               
+            }
+         })
+   }
+   search.addEventListener('keyup', input)
+}
+ 
 
 // Call functions
 showPage(data,1);
 addPagination(data);
 searchAndTitile()
+searchFilter(data)
 
 
 
