@@ -149,30 +149,38 @@ const searchFilter = (list) => {
    const search = document.querySelector('#search');
 
    // call the student-item DOM class and assign it a variable called 'studentItem'
-   
    const detail = document.getElementsByTagName('h3');
 
-  
+// function to be passed into the event handler  
    const input = (event) => {
-      const inputTerm = event.target.value.toLowerCase();
-         //loop through the data's array making a new array of names
 
+      // listen for changes on the event target and store the value in 'inputTerm'
+      const inputTerm = event.target.value.toLowerCase();
+
+         //loop through the elements 
          for(let i = 0; i < detail.length; i++){
+
+            // save each element to the variable 'studentName' 
             const studentName = detail[i].innerHTML.toLowerCase();
+
+            // if the student name is included in the inputTerm
             if(studentName.includes(inputTerm)){
+               // filter it out and display it on the page
                detail[i].parentNode.parentNode.style.display = 'block'
             }else{
+               // make the rest disappear from the page
                detail[i].parentNode.parentNode.style.display = 'none'
             }
          }
+         // =======How to make it bette=========
+         // filter all the student data and return all instencese from all pages
+         // show page number where the filtered card belongs
+         // =======How to make it bette=========
    }
+   // event handler for search
    search.addEventListener('keyup', input)
 }
- 
-//get input
-//check if the input matches any of the elements on the page
-//display only the elements that match the search
-//if no element matches the search display a message
+
 
 // Call functions
 showPage(data,1);
