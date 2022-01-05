@@ -149,22 +149,30 @@ const searchFilter = (list) => {
    const search = document.querySelector('#search');
 
    // call the student-item DOM class and assign it a variable called 'studentItem'
-   const studentItem = document.getElementsByClassName('student-item');
+   
+   const detail = document.getElementsByTagName('h3');
 
   
    const input = (event) => {
       const inputTerm = event.target.value.toLowerCase();
          //loop through the data's array making a new array of names
-            list.map(studentCard => {
-            const studentName = (`${studentCard.name.first} ${studentCard.name.last}`).toLowerCase()
+
+         for(let i = 0; i < detail.length; i++){
+            const studentName = detail[i].innerHTML.toLowerCase();
             if(studentName.includes(inputTerm)){
-               
+               detail[i].parentNode.parentNode.style.display = 'block'
+            }else{
+               detail[i].parentNode.parentNode.style.display = 'none'
             }
-         })
+         }
    }
    search.addEventListener('keyup', input)
 }
  
+//get input
+//check if the input matches any of the elements on the page
+//display only the elements that match the search
+//if no element matches the search display a message
 
 // Call functions
 showPage(data,1);
